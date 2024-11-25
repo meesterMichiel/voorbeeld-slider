@@ -2,7 +2,7 @@ const slider = {
     sliderElement: document.querySelector('.slider'),
     prevButton: document.querySelector('.prev'),
     nextButton: document.querySelector('.next'),
-    visibleCard: 3,
+    visibleCard: 1,
     totalCards: 0,
     cardWidth: 0,
     gap: 30, // De som van de marges, 15px aan beide zijden van een kaart
@@ -23,14 +23,16 @@ const slider = {
 
     setSlider() {
         const offset = this.calculateOffset();
-        this.sliderElement.style.transform = `translateX(-${offset}px)`;
+        //this.sliderElement.style.transform = `translateX(-${offset}px)`;
+        this.sliderElement.style.transform = `translateX(${offset}px)`;
     },
 
     calculateOffset() {
         const centerOffset = 
             (this.cardWidth + this.gap) * (this.visibleCard - 1) - 
             ((this.sliderElement.parentElement.offsetWidth - this.cardWidth - this.gap) / 2);
-        return Math.max(0, centerOffset); // Zorg dat de offset niet negatief is
+        //return Math.max(0, centerOffset); // Zorg dat de offset niet negatief is
+        return -centerOffset;
     },
 
     prevCard() {
